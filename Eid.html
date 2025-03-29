@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid al-Fitr Greetings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Dark theme styles */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom, #1a1a2e, #16213e);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Starry background */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+        .star:nth-child(1) { top: 10%; left: 20%; width: 2px; height: 2px; animation-delay: 0s; }
+        .star:nth-child(2) { top: 20%; left: 70%; width: 3px; height: 3px; animation-delay: 0.5s; }
+        .star:nth-child(3) { top: 50%; left: 40%; width: 2px; height: 2px; animation-delay: 1s; }
+        .star:nth-child(4) { top: 70%; left: 10%; width: 4px; height: 4px; animation-delay: 1.5s; }
+        .star:nth-child(5) { top: 80%; left: 80%; width: 2px; height: 2px; animation-delay: 2s; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Card styles */
+        .card {
+            width: 300px;
+            height: 400px;
+            position: relative;
+            perspective: 1000px;
+            cursor: pointer;
+            animation: fadeIn 1s ease-in;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.6s ease-in-out;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            background: #2a2a4e;
+            color: #f0f0f0;
+        }
+        .front {
+            z-index: 2;
+        }
+        .back {
+            transform: rotateY(180deg);
+            position: relative;
+        }
+        .card.flipped .front {
+            transform: rotateY(180deg);
+        }
+        .card.flipped .back {
+            transform: rotateY(0deg);
+        }
+
+        /* Pulsing moon */
+        .moon {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, #ffffff, #c0c0c0);
+            border-radius: 50%;
+            position: relative;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+            animation: pulse 2s infinite;
+        }
+        .moon::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 70px;
+            height: 70px;
+            background: #2a2a4e;
+            border-radius: 50%;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff; }
+            50% { box-shadow: 0 0 15px #ffffff, 0 0 25px #ffffff; }
+        }
+
+        /* Lantern icon */
+        .lantern {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+        }
+
+        /* FontAwesome icons */
+        .back .icon {
+            position: absolute;
+            font-size: 24px;
+            color: #ffd700;
+            opacity: 0;
+            text-shadow: 0 0 5px #ffd700;
+        }
+        .back .icon:nth-child(1) { top: 10%; left: 10%; } /* Crescent Moon */
+        .back .icon:nth-child(2) { top: 10%; right: 10%; } /* Mosque */
+        .back .icon:nth-child(3) { bottom: 10%; left: 10%; } /* Star & Crescent */
+        .back .icon:nth-child(4) { bottom: 10%; right: 10%; } /* Gift */
+
+        /* Icon animations */
+        .card.flipped .back .icon {
+            animation: fadeInScale 0.5s ease-in forwards;
+        }
+        .back .icon:nth-child(1) { animation-delay: 0.6s; }
+        .back .icon:nth-child(2) { animation-delay: 0.8s; }
+        .back .icon:nth-child(3) { animation-delay: 1.0s; }
+        .back .icon:nth-child(4) { animation-delay: 1.2s; }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+                text-shadow: none;
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+                text-shadow: 0 0 5px #ffd700;
+            }
+        }
+
+        /* Name badge */
+        .name-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 24px;
+            color: #ffd700;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Text styles */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 36px;
+            margin: 0;
+        }
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .message {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .card {
+                width: 250px;
+                height: 350px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            p {
+                font-size: 14px;
+            }
+            .back .icon {
+                font-size: 18px;
+            }
+            .back .icon:nth-child(1) { top: 5%; left: 5%; }
+            .back .icon:nth-child(2) { top: 5%; right: 5%; }
+            .back .icon:nth-child(3) { bottom: 5%; left: 5%; }
+            .back .icon:nth-child(4) { bottom: 5%; right: 5%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars -->
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <!-- Flip card -->
+    <div class="card" id="card" tabindex="0">
+        <div class="front">
+            <div class="moon"></div>
+            <svg class="lantern" viewBox="0 0 50 50">
+                <rect x="20" y="10" width="10" height="30" fill="#ffd700"/>
+                <circle cx="25" cy="40" r="5" fill="#ffd700"/>
+                <path d="M20 10 L15 5 L35 5 L30 10 Z" fill="#ffd700"/>
+            </svg>
+            <h1>Eid Mubarak!</h1>
+            <p>Click to open</p>
+        </div>
+        <div class="back">
+            <div class="message">
+                <h1>Dear friends,</h1>
+                <p>As the holy month of Ramadan ends, I wish you a happy and blessed Eid al-Fitr. May this day bring joy, peace, and prosperity. Let’s celebrate togetherness and gratitude.</p>
+                <p>Eid Mubarak!</p>
+            </div>
+            <!-- FontAwesome icons -->
+            <i class="fas fa-moon icon"></i>
+            <i class="fas fa-mosque icon"></i>
+            <i class="fas fa-star-and-crescent icon"></i>
+            <i class="fas fa-gift icon"></i>
+            <!-- Name badge -->
+            <div class="name-badge">Ahmed Hussien</div>
+        </div>
+    </div>
+
+    <!-- JavaScript for flip functionality -->
+    <script>
+        const card = document.getElementById('card');
+        let autoFlipTimeout = setTimeout(() => {
+            card.classList.add('flipped');
+        }, 5000);
+
+        card.addEventListener('click', function() {
+            clearTimeout(autoFlipTimeout);
+            this.classList.toggle('flipped');
+        });
+    </script>
+</body>
+</html>
