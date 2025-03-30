@@ -1,0 +1,229 @@
+*{
+        padding: 0;
+        box-sizing: border-box;
+}
+body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to bottom, #1a1a2e, #16213e);
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 2s infinite;
+    }
+    
+    .star:nth-child(1) { top: 10%; right: 20%; width: 5px; height: 5px; animation-delay: 0s; }
+    .star:nth-child(2) { top: 20%; right: 70%; width: 3px; height: 3px; animation-delay: 0.5s; }
+    .star:nth-child(3) { top: 50%; right: 40%; width: 2px; height: 2px; animation-delay: 1s; }
+    .star:nth-child(4) { top: 70%; right: 10%; width: 4px; height: 4px; animation-delay: 1.5s; }
+    .star:nth-child(5) { top: 80%; right: 80%; width: 5px; height: 5px; animation-delay: 2s; }
+    .star:nth-child(6) { top: 30%; right: 50%; width: 2px; height: 2px; animation-delay: 2.5s; }
+    .star:nth-child(7) { top: 60%; right: 20%; width: 3px; height: 3px; animation-delay: 3s; }
+    .star:nth-child(8) { top: 40%; right: 80%; width: 5px; height: 5px; animation-delay: 3.5s; }
+    .star:nth-child(9) { top: 90%; right: 40%; width: 4px; height: 4px; animation-delay: 4s; }
+    .star:nth-child(10) { top: 50%; right: 60%; width: 2px; height: 2px; animation-delay: 4.5s; }
+    .star:nth-child(11) { top: 70%; right: 30%; width: 3px; height: 3px; animation-delay: 5s; }
+    .star:nth-child(12) { top: 80%; right: 70%; width: 5px; height: 5px; animation-delay: 5.5s; }
+
+   
+
+    
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.5;
+    scale: 1; }
+      50% { opacity: 1;
+    scale: 1.2; }
+    }
+
+    .card {
+      width: 320px;
+      height: 460px;
+      position: relative;
+      perspective: 1000px;
+      cursor: pointer;
+      animation: fadeIn 1s ease-in;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+      transform: scale(1.05);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      transition: transform 0.6s ease-in-out;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg,  #3939659e, #26386ba7);
+      color: #f0f0f0;
+      overflow: hidden;
+    }
+    
+    .front { z-index: 2; }
+    .back { transform: rotateY(180deg); padding: 25px; box-sizing: border-box; justify-content: space-between;}
+    .card.flipped .front { transform: rotateY(180deg); }
+    .card.flipped .back { transform: rotateY(0deg); }
+    .moon {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      position: relative;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #c0c0c0);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5);
+    }
+    .moon::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15%;
+      width:90%;
+      height: 100%;
+     background: url("../images/my-image.jpg") no-repeat center/cover;
+      border-radius: 50%;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 40px rgba(255, 255, 255, 0.7); }
+    }
+
+    .lantern {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      filter: drop-shadow(0 0 5px #ffd700);
+    }
+
+    .icons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    
+    .icons .icon {
+      position: absolute;
+      font-size: 30px;
+      color: #ffd700;
+      opacity: 0;
+      text-shadow: 0 0 8px #ffd700;
+      animation: zoomInOut 1.5s infinite ease-in-out;
+    }
+    
+    .icons .icon:nth-child(1) { top: 70px; right: 30px; } 
+    .icons .icon:nth-child(2) { top: 30px; left: 30px; }  
+    .icons .icon:nth-child(3) { bottom: 30px; right: 30px; } 
+    .icons .icon:nth-child(4) { bottom: 110px; left: 30px; }  
+    
+    .card.flipped .icons .icon {
+      animation: fadeInScale 0.5s ease-in forwards, zoomInOut 1.5s infinite ease-in-out;
+    }
+    
+    .icons .icon:nth-child(1) { animation-delay: 0.6s; }
+    .icons .icon:nth-child(2) { animation-delay: 0.8s; }
+    .icons .icon:nth-child(3) { animation-delay: 1.0s; }
+    .icons .icon:nth-child(4) { animation-delay: 1.2s; }
+    
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.5); text-shadow: none; }
+      to { opacity: 1; transform: scale(1); text-shadow: 0 0 8px #c4a704c2; }
+    }
+    
+    @keyframes zoomInOut {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    .name-badge {
+      font-family: 'Amiri', serif;
+       font-size: 1.3rem;
+      color: #ffd700;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px 15px;
+          line-height: 1;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+    }
+    .back-badge{
+       position: absolute;
+      bottom: 15px;
+      right: 50%;
+      transform: translateX(50%);
+        font-family: sans-serif;
+        font-style: italic;
+        
+    }
+    .front-badge{
+ font-size: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Amiri', serif;
+      font-size: 40px;
+      margin: 0;
+      color: #ffd700;
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+    
+    p {
+      font-size: 16px;
+      /* margin: 12px 0; */
+      line-height: 1.6;
+    }
+    
+    .message {
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .greeting-span {
+      font-size: larger;
+      color: #ffd700;
+    }
+
+    @media (max-width: 600px) {
+      .card { width: 280px; height: 420px; }
+      h1 { font-size: 32px; }
+      p { font-size: 14px; }
+      .moon { width: 100px; height: 100px; }
+      .lantern { width: 50px; height: 50px; }
+      .icons .icon { font-size: 24px; }
+      .name-badge { font-size: 1rem; }
+    }
+    .text-center{
+      text-align: center;
+    }
