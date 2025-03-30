@@ -216,7 +216,9 @@ body {
     }
 
     @media (max-width: 600px) {
-      .card { width: 280px; height: 420px; }
+      .card { width: 300px;
+        max-width: 90%;
+         height: 420px; }
       h1 { font-size: 32px; }
       p { font-size: 14px; }
       .moon { width: 100px; height: 100px; }
